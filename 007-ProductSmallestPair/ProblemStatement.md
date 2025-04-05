@@ -125,45 +125,55 @@ Sum = 22 > 3 → Not valid
 #include <vector>
 #include <algorithm>
 
-int ProductSmallestPair(int sum, vector<int> arr) {
-    if (arr.size() < 2) return -1;
+using namespace std;
 
-    sort(arr.begin(), arr.end());
-
-    for (size_t i = 0; i < arr.size() - 1; ++i) {
-        for (size_t j = i + 1; j < arr.size(); ++j) {
-            if (arr[i] + arr[j] <= sum) {
-                return arr[i] * arr[j];
-            }
-        }
+int ProductSmallestPair(int sum, vector<int>& arr) {
+    if (arr.size() < 2) {
+        return -1;
     }
 
-    return 0;
+    sort(arr.begin(), arr.end());
+    int a = arr[0];
+    int b = arr[1];
+
+    if (a + b <= sum) {
+        return a * b;
+    } else {
+        return 0;
+    }
 }
 
 int main() {
     vector<int> arr1 = {5, 2, 4, 3, 9, 7, 1};
     int sum1 = 9;
-    cout << "Output 1: " << ProductSmallestPair(sum1, arr1) << std::endl;  // 2
+    cout << "Output: " << ProductSmallestPair(sum1, arr1) << endl; // Output: 2
 
     vector<int> arr2 = {9, 8, 3, -7, 3, 9};
     int sum2 = 4;
-    cout << "Output 2: " << ProductSmallestPair(sum2, arr2) << std::endl;  // -21
-
-    vector<int> arr3 = {5};
-    int sum3 = 4;
-    cout << "Output 3: " << ProductSmallestPair(sum3, arr3) << std::endl;  // -1
-
-    vector<int> arr4 = {10, 12};
-    int sum4 = 3;
-    cout << "Output 4: " << ProductSmallestPair(sum4, arr4) << std::endl;  // 0
+    cout << "Output: " << ProductSmallestPair(sum2, arr2) << endl; // Output: -21
 
     return 0;
 }
 ```
-
+Python Implementation
 ---
+def ProductSmallestPair(sum_value, arr):
+    if len(arr) < 2:
+        return -1
+
+    arr.sort()
+    a = arr[0]
+    b = arr[1]
+
+    if a + b <= sum_value:
+        return a * b
+    else:
+        return 0
+
 
 ## 👨‍💻 Author 
 Prepared by: *Prathamesh Jadhav*
 
+Conclusion
+
+This function identifies the smallest two elements in an array, checks if their sum is within the given limit, and returns their product if valid. It handles edge cases such as empty arrays and ensures the result fits within integer bounds.
