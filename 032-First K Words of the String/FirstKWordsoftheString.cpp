@@ -14,7 +14,7 @@ void printFirstKwords(const string& str, int k){
             if(spaceCount == k){
                 break;
             }
-        }
+        }  
         i++;
     }
 }
